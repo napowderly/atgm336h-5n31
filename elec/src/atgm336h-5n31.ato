@@ -1,2 +1,68 @@
-module Atgm336h5n31:
-    signal gnd
+import Power from "generics/interfaces.ato"
+import I2C from "generics/interfaces.ato"
+import UART from "generics/interfaces.ato"
+import Capacitor from "generics/capacitors.ato"
+
+component _ATGM336H_5N31:
+    # component ATGM336H-5N31
+    footprint = "GPSM-SMD_ATGM336H-TR"
+    lcsc_id = "C90770"
+    mpn = "C90770"
+    # pins
+    signal GND ~ pin 1
+    signal TXD ~ pin 2
+    signal RXD ~ pin 3
+    signal _1PPS ~ pin 4
+    signal ON_OFF ~ pin 5
+    signal VBAT ~ pin 6
+    signal VCC ~ pin 8
+    signal NRESET ~ pin 9
+    GND ~ pin 10
+    signal RF_IN ~ pin 11
+    GND ~ pin 12
+    signal VCC_RF ~ pin 14
+    signal SDA ~ pin 16
+    signal SCL ~ pin 17
+
+module ATGM336H_5N31:
+    ic = new _ATGM336H_5N31
+    uart = new UART
+    i2c = new I2C
+    power = new Power
+
+    # Power
+    power.vcc ~ ic.VBAT
+    power.gnd ~ ic.GND
+
+    # input caps
+    input_cap = new Capacitor
+    input_cap.power ~ power
+    input_cap.value = 1uF +/- 20%
+    input_cap.package = "0402"
+
+    # i2c
+    i2c.sda ~ ic.SDA
+    i2c.scl ~ ic.SCL
+    i2c.gnd ~ ic.GND
+
+    # UART
+    uart.tx ~ ic.TXD
+    uart.rx ~ ic.RXD
+    uart.gnd ~ ic.GND
+
+    # RF
+    ufl = new BWU_FL_IPEX1
+    ufl.feed ~ ic.RF_IN
+    ufl.gnd ~ ic.GND
+
+
+#UFL connector
+component BWU_FL_IPEX1:
+    # component BWU.FL-IPEX1
+    footprint = "IPEX-SMD_BWIPX-1-001E"
+    lcsc_id = "C5137195"
+    mpn = "C5137195"
+    # pins
+    signal gnd ~ pin 2
+    gnd ~ pin 3
+    signal feed ~ pin 1
