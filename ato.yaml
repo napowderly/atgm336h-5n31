@@ -1,0 +1,6 @@
+ato-version: ^0.2.0
+builds:
+  default:
+    entry: elec/src/atgm336h-5n31.ato:Atgm336h5n31
+dependencies:
+- generics
