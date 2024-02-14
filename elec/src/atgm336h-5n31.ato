@@ -32,6 +32,8 @@ module ATGM336H_5N31:
 
     # Power
     power.vcc ~ ic.VBAT
+    power.vcc ~ ic.VCC_RF
+    power.vcc ~ ic.VCC
     power.gnd ~ ic.GND
 
     # input caps
