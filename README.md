@@ -19,26 +19,5 @@ A super cheap GPS module with external UFL antenna.
 - **Serial Baudrate:** 9600 (default)
 - **Operational Temperature Range:** -40℃ to +85℃
 
-## Debug Interface
-Configured for direct connection with Saleae logic analyzers.
-
-## Signal Access
-Provides easy access to signals for monitoring and debugging.
-
-## SPI Interface
-Includes connections for SPI bus monitoring.
-
-## I2C Interface
-Includes connections for I2C bus monitoring.
-
-## Power Connections
-Accommodates power (VCC) and ground (GND) for the probe.
-
-## Contributing
-Contribute to this package using pull requests.
-
-## License
-This battery connector module is provided under the MIT License.
-
 ## Contact
 For further inquiries or support, please contact me at narayan@atopile.io.
